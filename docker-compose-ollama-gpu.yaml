@@ -13,6 +13,8 @@ services:
       - ollama-webui
     networks:
       - ollama-docker
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   ollama:
     volumes:
@@ -35,6 +37,8 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
+    extra_hosts:
+      - host.docker.internal:host-gateway
 
   ollama-webui:
     image: ghcr.io/open-webui/open-webui:main
